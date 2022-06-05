@@ -1,0 +1,59 @@
+body{
+
+    background-color: darkslateblue;
+}
+
+#main{
+    position: absolute;
+    width: 600px;
+
+    z-index: 15;
+    top: 20%;
+    left: 40%;
+    margin: -100px 0 0 -150px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+}
+.upper{
+    font-size: xx-large;
+    color: aqua;
+}
+
+#inner{
+    margin-left: 20px;
+    margin-right: 20px;
+    padding: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+
+
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img{
+    width: 300px;
+    margin: 5px;
+}
+
+.replace{
+    background-color: yellow;
+}
+
+.delete{
+    background-color: red;
+    color: white;
+}
+
+#file-input{
+    visibility: hidden;
+    height: 0px;
+    width: 0px;
+}

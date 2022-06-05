@@ -7,18 +7,12 @@ function remove(filename){
     removeInput.value = filename;
 
     formData.submit();
-    // fetch("edit.php",
-    // {
-    //     body: formData,
-    //     method: "post"
-    // }).then((response)=>{
-    //     console.log(response);
-    // });
 }
 
 function replace(filename){
-    fileInput.click();
     console.log("replacing: " + filename);
+    removeInput.value = filename;
+    fileInput.click(); 
 }
 fileInput.onchange = ({target})=>{
     let file = target.files[0];

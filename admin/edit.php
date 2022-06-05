@@ -1,7 +1,42 @@
 <?php
+
+if (isset($_FILES["file"]) && $_FILES["file"]["name"]!=""){ // replace
+    $newFile = $_FILES["file"]["name"];
+    $oldFile = $_POST["remove"];
+    
+    $result = "";
+    if (file_exists($oldFile) && unlink($oldFile)) {
+        move_uploaded_file($_FILES["file"]["tmp_name"], $oldFile);
+        $result = 'file '. $oldFile . ' replaced with '. $newFile;
+    } else {
+        $result = 'there was a problem replacing the file';
+    }
+
+    echo "<script>
+    var ok = alert('$result' );
+    window.location.replace('edit.php'); // reload page
+    </script>";
+}
+else if (isset($_POST["remove"]) && $_POST["remove"]!=""){ // remove
+    $file = $_POST["remove"];
+    $result = "";
+    if (file_exists($file) && unlink($file)) {
+        $result = 'file '. $file . ' removed';
+    } else {
+        $result = 'there was a problem deleting the file';
+    }
+    echo "<script>
+    var ok = alert('$result');
+    window.location.replace('edit.php'); // reload page
+    </script>";
+}
+
+
+
+
 $var = "";
 foreach (glob('Images/*') as $filename) {
-    $var .= "<form action='edit.php' id='form' method='POST' class='row'>
+    $var .= "<form action='edit.php' id='form' method='POST' enctype='multipart/form-data' class='row'>
     <img class='img' src=".$filename . ">
     <input type = 'button' class='replace' onclick='replace(\"$filename\")' value='replace'>
     <input type = 'button' class='delete' onclick='remove(\"$filename\")' value='delete'>
@@ -9,23 +44,6 @@ foreach (glob('Images/*') as $filename) {
     <input type='hidden' name='remove' id='remove'>
     </form>";
 }
-
-if (isset($_POST["remove"]) && $_POST["remove"]!=""){
-    $file = $_POST["remove"];
-    echo "<script>
-    var ok = alert('file $file' + ' removed' );
-    </script>";
-    unset($_POST["remove"]);
-}
-
-if (isset($_POST["file"]) && $_POST["file"]!=""){
-    $file = $_POST["file"];
-    echo "<script>
-    var ok = alert('file $file' + ' replaced' );
-    </script>";
-    unset($_POST["file"]);
-}
-
 ?>
 
 <!DOCTYPE html>

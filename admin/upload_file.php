@@ -16,7 +16,7 @@ if ($_FILES["file"]["error"] > 0){
 }
 echo "<script>
 var ok = alert('$result')
-window.location.replace('panel.html');
+window.location.replace('panel.php');
 </script>";
 
 ?>

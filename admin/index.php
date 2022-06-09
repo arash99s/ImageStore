@@ -1,8 +1,8 @@
 <?php
-
-$newURL = 'panel.html';
+session_start();
+$newURL = 'login.php';
 if(isset($_SESSION["username"])){
-    $newURL = 'login.html';
+    $newURL = 'panel.php';
 }
 
 header('Location: '.$newURL);

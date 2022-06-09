@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+if(!isset($_SESSION["username"])){
+    $newURL = 'login.php';
+    header('Location: '.$newURL);
+    exit();
+}
 
 if (isset($_FILES["file"]) && $_FILES["file"]["name"]!=""){ // replace
     $newFile = $_FILES["file"]["name"];

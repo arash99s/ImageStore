@@ -7,6 +7,9 @@ foreach (glob('admin/Images/*') as $filename) {
 
 <script>
     function download(filepath){
+        var result = confirm("Do you want to downnload this item?");
+        if (result == false) return;
+
         var filename = filepath.replace(/^.*[\\\/]/, '');
         console.log("downloading : " + filepath);
         var a = document.createElement("a");

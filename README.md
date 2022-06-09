@@ -1,3 +1,3 @@
 # ImageStore
 
-![alt text](admin\Images\sumary.png)
+![alt text](admin/Images/summary.png)
